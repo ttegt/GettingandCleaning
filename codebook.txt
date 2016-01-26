@@ -1,0 +1,126 @@
+Getting and Cleaning Data Project Codebook
+==========================================
+
+This project manipulates data sets obtained from the UCI Machine Learning Repository at the following url: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+Full details on the data can be found in the README.txt and features_info.txt files. To summarize, subjects wearing smartphones were asked to perform 6 activities. The phone's accelerometer and gyroscope captured data while the tasks were being performed. Statistical and other computational procedures were performed on the raw data, and the results were stored in the X_train.txt and X_test.txt files.
+
+
+The Project
+===========
+
+The script run_analysis.R produces two data sets (merged1 and activity_mean).
+
+The X_train.txt set is combined with its subject and activity identifier values (from subject_train.txt and y_train.txt). Variable names are attached to the quantitative variables using the features.txt file. The same thing is done with the X_test.txt set. The two sets are then joined.
+
+To produce the first requested data set, the variables from features.txt involving mean() and std() are extracted.
+
+
+The set merged1 contains the following variables.
+
+
+subject: a number 1-30 identifying the subject performing the activity, extracted from subject_train.txt and subject_test.txt. 
+	
+activity: the name of the activity performed, extracted from y_train.txt and y_test.txt files, and renamed using the coding (from the activity_labels.txt file) (1=WALKING, 2=WALKING_UPSTAIRS, 3=WALKING_DOWNSTAIRS, 4=SITTING, 5=STANDING, 6=LAYING)
+
+
+The following quantitative variables from the features.txt file were selected and renamed. Full descriptions of the measurements can be found in the features.txt file. It should be noted that units for the variables were not provided.
+
+Old Name			New Name
+
+tBodyAcc-mean()-X		timeBodyAccMeanXaxis
+tBodyAcc-mean()-Y		timeBodyAccMeanYaxis
+tBodyAcc-mean()-Z		timeBodyAccMeanZaxis
+tBodyAcc-std()-X		timeBodyAccStandardDeviationXaxis
+tBodyAcc-std()-Y		timeBodyAccStandardDeviationYaxis
+tBodyAcc-std()-Z		timeBodyAccStandardDeviationZaxis
+tGravityAcc-mean()-X		timeGravityAccMeanXaxis
+tGravityAcc-mean()-Y		timeGravityAccMeanYaxis
+tGravityAcc-mean()-Z		timeGravityAccMeanZaxis
+tGravityAcc-std()-X		timeGravityAccStandardDeviationXaxis
+tGravityAcc-std()-Y		timeGravityAccStandardDeviationYaxis
+tGravityAcc-std()-Z		timeGravityAccStandardDeviationZaxis
+tBodyAccJerk-mean()-X		timeBodyAccJerkMeanXaxis
+tBodyAccJerk-mean()-Y		timeBodyAccJerkMeanYaxis
+tBodyAccJerk-mean()-Z		timeBodyAccJerkMeanZaxis
+tBodyAccJerk-std()-X		timeBodyAccJerkStandardDeviationXaxis
+tBodyAccJerk-std()-Y		timeBodyAccJerkStandardDeviationYaxis
+tBodyAccJerk-std()-Z		timeBodyAccJerkStandardDeviationZaxis
+tBodyGyro-mean()-X		timeBodyGyroMeanXaxis
+tBodyGyro-mean()-Y		timeBodyGyroMeanYaxis
+tBodyGyro-mean()-Z		timeBodyGyroMeanZaxis
+tBodyGyro-std()-X		timeBodyGyroStandardDeviationXaxis
+tBodyGyro-std()-Y		timeBodyGyroStandardDeviationYaxis
+tBodyGyro-std()-Z		timeBodyGyroStandardDeviationZaxis
+tBodyGyroJerk-mean()-X		timeBodyGyroJerkMeanXaxis
+tBodyGyroJerk-mean()-Y		timeBodyGyroJerkMeanYaxis
+tBodyGyroJerk-mean()-Z		timeBodyGyroJerkMeanZaxis
+tBodyGyroJerk-std()-X		timeBodyGyroJerkStandardDeviationXaxis
+tBodyGyroJerk-std()-Y		timeBodyGyroJerkStandardDeviationYaxis
+tBodyGyroJerk-std()-Z		timeBodyGyroJerkStandardDeviationZaxis
+tBodyAccMag-mean()		timeBodyAccMagnitudeMean
+tBodyAccMag-std()		timeBodyAccMagnitudeStandardDeviation
+tGravityAccMag-mean()		timeGravityAccMagnitudeMean
+tGravityAccMag-std()		timeGravityAccMagnitudeStandardDeviation
+tBodyAccJerkMag-mean()		timeBodyAccJerkMagnitudeMean
+tBodyAccJerkMag-std()		timeBodyAccJerkMagnitudeStandardDeviation
+tBodyGyroMag-mean()		timeBodyGyroMagnitudeMean
+tBodyGyroMag-std()		timeBodyGyroMagnitudeStandardDeviation
+tBodyGyroJerkMag-mean()		timeBodyGyroJerkMagnitudeMean
+tBodyGyroJerkMag-std()		timeBodyGyroJerkMagnitudeStandardDeviation
+fBodyAcc-mean()-X		frequencyBodyAccMeanXaxis
+fBodyAcc-mean()-Y		frequencyBodyAccMeanYaxis
+fBodyAcc-mean()-Z		frequencyBodyAccMeanZaxis
+fBodyAcc-std()-X		frequencyBodyAccStandardDeviationXaxis
+fBodyAcc-std()-Y		frequencyBodyAccStandardDeviationYaxis
+fBodyAcc-std()-Z		frequencyBodyAccStandardDeviationZaxis
+fBodyAccJerk-mean()-X		frequencyBodyAccJerkMeanXaxis
+fBodyAccJerk-mean()-Y		frequencyBodyAccJerkMeanYaxis
+fBodyAccJerk-mean()-Z		frequencyBodyAccJerkMeanZaxis
+fBodyAccJerk-std()-X		frequencyBodyAccJerkStandardDeviationXaxis
+fBodyAccJerk-std()-Y		frequencyBodyAccJerkStandardDeviationYaxis
+fBodyAccJerk-std()-Z		frequencyBodyAccJerkStandardDeviationZaxis
+fBodyGyro-mean()-X		frequencyBodyGyroMeanXaxis
+fBodyGyro-mean()-Y		frequencyBodyGyroMeanYaxis
+fBodyGyro-mean()-Z		frequencyBodyGyroMeanZaxis
+fBodyGyro-std()-X		frequencyBodyGyroStandardDeviationXaxis
+fBodyGyro-std()-Y		frequencyBodyGyroStandardDeviationYaxis
+fBodyGyro-std()-Z		frequencyBodyGyroStandardDeviationZaxis
+fBodyAccMag-mean()		frequencyBodyAccMagnitudeMean
+fBodyAccMag-std()		frequencyBodyAccMagnitudeStandardDeviation
+fBodyBodyAccJerkMag-mean()	frequencyBodyAccJerkMagnitudeMean
+fBodyBodyAccJerkMag-std()	frequencyBodyAccJerkMagnitudeStandardDeviation
+fBodyBodyGyroMag-mean()		frequencyBodyGyroMagnitudeMean
+fBodyBodyGyroMag-std()		frequencyBodyGyroMagnitudeStandardDeviation
+fBodyBodyGyroJerkMag-mean()	frequencyBodyGyroJerkMagnitudeMean
+fBodyBodyGyroJerkMag-std()	frequencyBodyGyroJerkMagnitudeStandardDeviation
+
+
+Variables excluded from the data set were those involving the following values (497 total).
+
+mad()
+max()
+min()
+sma()
+energy()
+iqr()
+entropy()
+arCoeff()
+correlation()
+maxInds()
+meanFreq()
+skewness() 
+kurtosis()
+bandsEnergy()
+angle()
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+*The last 5 were calculated from the angle() variable.
+
+
+Data set 2: Averaging by subject and activity
+=============================================
+The second data set, activity_mean, is obtained by calculating the mean of all the selected quantitative variables, grouped by subject ID and activity. The quantitative variable names have not been changed, though they now represent an average of all of the values obtained when a subject performed a certain activity.
