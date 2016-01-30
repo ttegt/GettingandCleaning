@@ -42,7 +42,6 @@ merged1 <- fullset[,meansd]
 
 #tidying the variable names
 names(merged1) <- gsub("-|\\(|\\)", "", names(merged1)) #remove non alphanumeric
-#names(merged1) <- tolower(names(merged1))
 names(merged1) <- gsub("^t", "time", names(merged1))
 names(merged1) <- gsub("^f", "frequency", names(merged1))
 names(merged1) <- gsub("std", "StandardDeviation", names(merged1))
@@ -51,7 +50,7 @@ names(merged1) <- gsub("Mag", "Magnitude", names(merged1))
 names(merged1) <- gsub("X$", "Xaxis", names(merged1))
 names(merged1) <- gsub("Y$", "Yaxis", names(merged1)) 
 names(merged1) <- gsub("Z$", "Zaxis", names(merged1))
-names(merged1) <- gsub("BodyBody", "Body", names(merged1))
+names(merged1) <- gsub("BodyBody", "Body", names(merged1)) #removes extra body
 
 #naming activities
 
@@ -62,15 +61,16 @@ merged1 <- mutate(merged1, activity = activity_namer(activity))
 
 #Write merged1 to a text file
 
-write.table(merged1, "samsung1.txt", row.name=FALSE)
+write.table(merged1, "merged1.txt", row.name=FALSE)
 
 #mean by subject & activity
 
 groupeddata <- group_by(merged1, subject, activity)
-activity_mean <- summarize_each(groupeddata, funs(mean))
+samsung <- summarize_each(groupeddata, funs(mean))
+names(samsung)[3:68]<-paste( names(samsung)[3:68], "Mean", sep="")
 
-### activity_mean is the second data set ###
+### samsung is the second data set ###
 
 #write to a .txt file
 
-write.table(activity_mean, "tidysamsung.txt", row.name=FALSE)
+write.table(samsung, "samsung.txt", row.name=FALSE)
